@@ -3,6 +3,7 @@ import TextInputMirror from "./challenges/2"
 import ThemeToggler from "./challenges/3"
 import FilterableList from "./challenges/4"
 import LoginForm from "./challenges/5"
+import CharacterCounter from "./challenges/6"
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
     <ThemeToggler/>
     <FilterableList/>
     <LoginForm/>
+    <CharacterCounter/>
     </div>
   )
 }

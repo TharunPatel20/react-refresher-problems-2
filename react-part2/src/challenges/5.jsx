@@ -20,7 +20,7 @@ export default function LoginForm() {
 
   const [submit, setSubmit] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setEmailError("");
     setPasswordError("");
@@ -32,9 +32,39 @@ export default function LoginForm() {
       setPasswordError("Password must be at least 6 characters long.");
     }
     if (email.includes("@") && password.length >= 6) {
-      setSubmit(!submit);
+        console.log("started json server call");
+        try{
+        const response  = await submitUser(email,password);
+        console.log(response)
+        setSubmit(!submit);
+        }
+        catch(e){
+            console.error("Error submitting user:", e);
+        }
     }
   };
+
+
+async function submitUser(){
+    try{
+        const response = await fetch("http://localhost:5173/userDetails", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        return await response.json();
+    }catch(e){
+        console.error("Error submitting user:", e);
+        throw e; // rethrow the error to handle it in the calling function
+    }
+}
 
   return (
     <div style={cardStyle}>
