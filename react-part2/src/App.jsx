@@ -2,6 +2,7 @@ import Counter from "./challenges/1"
 import TextInputMirror from "./challenges/2"
 import ThemeToggler from "./challenges/3"
 import FilterableList from "./challenges/4"
+import LoginForm from "./challenges/5"
 
 function App() {
 
@@ -11,6 +12,7 @@ function App() {
     <TextInputMirror/>
     <ThemeToggler/>
     <FilterableList/>
+    <LoginForm/>
     </div>
   )
 }
